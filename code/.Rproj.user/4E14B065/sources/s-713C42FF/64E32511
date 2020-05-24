@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590287180212.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "64E32511",
+    "lastKnownWriteTime" : 1590287346,
+    "last_content_update" : 1590287346745,
+    "path" : "~/Dropbox/teaching/OPNS523/assignments/OPNS_Arcidiacono_lab/question/code/m.R",
+    "project_path" : "m.R",
+    "properties" : {
+        "cursorPosition" : "10,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

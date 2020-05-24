@@ -1,0 +1,16 @@
+{
+    "contents" : "estimatePrimitives<-function(d, max.age=12, beta=.98, s.val=c(1, 2)){\n  #Inputs: \n  #d: a data.frame d that gives the number of times a bus was replaced in period x.t.\n  #max.age: point at which cost stops increasing.\n  #s.val: potential values for the s parameter. Like Arcidiacono, we suppose these values are known.\n  #beta: discount factor that we assume is known\n  #Output: This function saves the MLE estimates of the theta cost parameters and the pi.s unobserved state distribution estimates to 'MLEests.txt'\n  \n  \n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1407474068214.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "636521348",
+    "id" : "985E2500",
+    "lastKnownWriteTime" : 1407732839,
+    "path" : "~/Dropbox/teaching/OPNS523/labs/OPNS_Arcidiacono_lab/github/code/modules/estimateModel.R",
+    "project_path" : "modules/estimateModel.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

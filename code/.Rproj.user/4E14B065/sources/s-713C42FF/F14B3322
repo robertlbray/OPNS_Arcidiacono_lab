@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590287367382.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F14B3322",
+    "lastKnownWriteTime" : 1590287375,
+    "last_content_update" : 1590287375344,
+    "path" : "~/Dropbox/teaching/OPNS523/assignments/OPNS_Arcidiacono_lab/question/code/modules/simData.R",
+    "project_path" : "modules/simData.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

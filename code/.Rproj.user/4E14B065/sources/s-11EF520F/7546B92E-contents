@@ -1,0 +1,34 @@
+simData <- function(param){
+  #Input: a list containing:
+    #theta: vector containing theta_1 and theta_2
+    #max.age: cost of engine increases in until max.age and then platueas
+    #s.val: vector of potential unobserved values
+    #pi.s: There are two unobserved states; pi.s gives the probability of being in state 1
+    #num.trials: number of bus engines to observe
+  #Output: a data.frame of simulated data. The data contain the number of times an engine was replaced in period x.t.
+  
+  #Calc. CDF of when cars were replaced
+  replace.rates<-ldply(s.val, function(s){
+    cbind(s, getValueFunction(theta=theta, max.age=max.age, s=s, beta=beta))
+  }) %>%
+    group_by(s) %>%
+    mutate(replaced.cdf=1-exp(cumsum(log(1-prob.replace)))) %>%
+    mutate(replaced.cdf=ifelse(rank(-x.t)==1, 1, replaced.cdf)) %>%
+    select(s, x.t, replaced.cdf, prob.replace)
+  
+  #Use this CDF to simulate data
+  data.frame(
+    trial=seq(num.trials),
+    s=sample(x=s.val, size=num.trials, prob=c(pi.s, 1-pi.s), replace=T)
+  ) %>%
+    ddply('trial', function(obs){
+      left_join(obs, replace.rates, by='s') %>%
+        filter(replaced.cdf>runif(1)) %>%
+        filter(rank(replaced.cdf)==1) %>%
+        mutate(x.t=ifelse(x.t==max.age, x.t+rgeom(n=1, prob.replace), x.t)) %>% #if you're at max.age, then draw time until replacement from a geometric distribution
+        select(x.t)        
+    }) %>% 
+    group_by(x.t) %>%
+    summarise(count=length(x.t)) %>%
+    saveRDS(paste0(varSave, 'simulatedData.rds'))
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "source('header.R')\n\n# simData()\nreadRDS(paste0(varSave, 'simulatedData.rds')) %>% estimatePrimitives()\n",
+    "created" : 1406684069086.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1423938742",
+    "id" : "B0C3831F",
+    "lastKnownWriteTime" : 1414685914,
+    "path" : "~/Dropbox/teaching/OPNS523/labs/OPNS_Arcidiacono_lab/github/code/m.R",
+    "project_path" : "m.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

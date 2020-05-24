@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590254594588.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "370AF5A5",
+    "lastKnownWriteTime" : 1407695969,
+    "last_content_update" : 1407695969,
+    "path" : "~/Dropbox/teaching/OPNS523/assignments/OPNS_Arcidiacono_lab/github/code/modules/getValueFunction.R",
+    "project_path" : "modules/getValueFunction.R",
+    "properties" : {
+        "cursorPosition" : "38,1",
+        "scrollLine" : "3"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

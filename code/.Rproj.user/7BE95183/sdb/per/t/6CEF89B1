@@ -1,0 +1,16 @@
+{
+    "contents" : "getValueFunction<-function(theta, max.age, s, beta){\n  #Inputs:\n  #theta: vector containing theta_1 and theta_2\n  #max.age: cost of engine increases in until max.age, and then plateaus: cost=theta_1*min(x, max.age)+theta_2*s\n  #s: value of unobserved state\n  #beta: discount factor\n  #Output: data.frame that specifies the value function for s=s and x.t={0, ..., max.age}.\n  \n  bellman.operator<-function(V.t){\n    #This function is equivolent to the T operator in equation (12.3.9) of Judd (1998)\n    #Input: a data.frame with  x.t in the first column and V.t(x.t) in the right column\n    #Output: the same data.frame after one more value function itteration\n    \n    #Calc value function with inclusive value\n    eulers.constant=-digamma(1)\n    mutate(V.t, next.val.dont.replace=lead(value)) %>%\n      mutate(\n        next.val.dont.replace=ifelse(is.na(next.val.dont.replace), value, next.val.dont.replace),\n        next.val.replace=first(value),\n        payoff.dont.replace=theta[1]*x.t+theta[2]*s,\n        v1=beta*next.val.replace,\n        v2=payoff.dont.replace+beta*next.val.dont.replace,\n        value=log(exp(v1)+exp(v2))+eulers.constant, \n        prob.replace=1/(1+exp(v2-v1))\n      ) %>%\n      select(x.t, value, prob.replace)\n  }\n  \n  epsilon=.01\n  delta=epsilon+1\n  V.t1=data.frame(x.t=seq(0, max.age), value=rep(0, max.age+1))\n  #iterate\n  while(delta>epsilon){\n    V.t=bellman.operator(V.t1)\n    delta=max(abs(V.t$value-V.t1$value))\n    V.t1=V.t\n  }\n  V.t\n}",
+    "created" : 1407444730259.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3559001276",
+    "id" : "6CEF89B1",
+    "lastKnownWriteTime" : 1407695969,
+    "path" : "~/Dropbox/teaching/OPNS523/labs/OPNS_Arcidiacono_lab/github/code/modules/getValueFunction.R",
+    "project_path" : "modules/getValueFunction.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,39 @@
+getValueFunction<-function(theta, max.age, s, beta){
+  #Inputs:
+  #theta: vector containing theta_1 and theta_2
+  #max.age: cost of engine increases in until max.age, and then plateaus: cost=theta_1*min(x, max.age)+theta_2*s
+  #s: value of unobserved state
+  #beta: discount factor
+  #Output: data.frame that specifies the value function for s=s and x.t={0, ..., max.age}.
+  
+  bellman.operator<-function(V.t){
+    #This function is equivolent to the T operator in equation (12.3.9) of Judd (1998)
+    #Input: a data.frame with  x.t in the first column and V.t(x.t) in the right column
+    #Output: the same data.frame after one more value function itteration
+    
+    #Calc value function with inclusive value
+    eulers.constant=-digamma(1)
+    mutate(V.t, next.val.dont.replace=lead(value)) %>%
+      mutate(
+        next.val.dont.replace=ifelse(is.na(next.val.dont.replace), value, next.val.dont.replace),
+        next.val.replace=first(value),
+        payoff.dont.replace=theta[1]*x.t+theta[2]*s,
+        v1=beta*next.val.replace,
+        v2=payoff.dont.replace+beta*next.val.dont.replace,
+        value=log(exp(v1)+exp(v2))+eulers.constant, 
+        prob.replace=1/(1+exp(v2-v1))
+      ) %>%
+      select(x.t, value, prob.replace)
+  }
+  
+  epsilon=.01
+  delta=epsilon+1
+  V.t1=data.frame(x.t=seq(0, max.age), value=rep(0, max.age+1))
+  #iterate
+  while(delta>epsilon){
+    V.t=bellman.operator(V.t1)
+    delta=max(abs(V.t$value-V.t1$value))
+    V.t1=V.t
+  }
+  V.t
+}

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590287178774.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9CAFCFAB",
+    "lastKnownWriteTime" : 1590287220,
+    "last_content_update" : 1590287220676,
+    "path" : "~/Dropbox/teaching/OPNS523/assignments/OPNS_Arcidiacono_lab/question/code/header.R",
+    "project_path" : "header.R",
+    "properties" : {
+        "cursorPosition" : "12,28",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

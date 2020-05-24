@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590164790524.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7546B92E",
+    "lastKnownWriteTime" : 1414685860,
+    "last_content_update" : 1590254533501,
+    "path" : "~/Dropbox/teaching/OPNS523/assignments/OPNS_Arcidiacono_lab/github/code/modules/simData.R",
+    "project_path" : "modules/simData.R",
+    "properties" : {
+        "cursorPosition" : "10,23",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

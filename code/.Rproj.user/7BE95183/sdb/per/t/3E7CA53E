@@ -1,0 +1,16 @@
+{
+    "contents" : "simData<-function(theta=c(-.2, 4), max.age=12, s.val=c(1, 2), pi.s=.75, beta=.98, num.trials=10^5){\n  #Inputs:\n  #theta: vector containing theta_1 and theta_2\n  #max.age: cost of engine increases in until max.age and then platueas\n  #s.val: vector of potential unobserved values\n  #pi.s: There are two unobserved states; pi.s gives the probability of being in state 1\n  #num.trials: number of bus engines to observe\n  #Output: a data.frame of simulated data. The data contain the number of times an engine was replaced in period x.t.\n  \n  #Calc. CDF of when cars were replaced\n  replace.rates<-ldply(s.val, function(s){\n    cbind(s, getValueFunction(theta=theta, max.age=max.age, s=s, beta=beta))\n  }) %>%\n    group_by(s) %>%\n    mutate(replaced.cdf=1-exp(cumsum(log(1-prob.replace)))) %>%\n    mutate(replaced.cdf=ifelse(rank(-x.t)==1, 1, replaced.cdf)) %>%\n    select(s, x.t, replaced.cdf, prob.replace)\n  \n  #Use this CDF to simulate data\n  data.frame(\n    trial=seq(num.trials),\n    s=sample(x=s.val, size=num.trials, prob=c(pi.s, 1-pi.s), replace=T)\n  ) %>%\n    ddply('trial', function(obs){\n      left_join(obs, replace.rates, by='s') %>%\n        filter(replaced.cdf>runif(1)) %>%\n        filter(rank(replaced.cdf)==1) %>%\n        mutate(x.t=ifelse(x.t==max.age, x.t+rgeom(n=1, prob.replace), x.t)) %>% #if you're at max.age, then draw time until replacement from a geometric distribution\n        select(x.t)        \n    }) %>% \n    group_by(x.t) %>%\n    summarise(count=length(x.t)) %>%\n    saveRDS(paste0(varSave, 'simulatedData.rds'))\n}",
+    "created" : 1407470001017.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "680652742",
+    "id" : "3E7CA53E",
+    "lastKnownWriteTime" : 1414685860,
+    "path" : "~/Dropbox/teaching/OPNS523/labs/OPNS_Arcidiacono_lab/github/code/modules/simData.R",
+    "project_path" : "modules/simData.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

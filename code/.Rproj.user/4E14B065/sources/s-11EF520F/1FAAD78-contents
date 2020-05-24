@@ -1,0 +1,15 @@
+source('header.R')
+
+list(
+  theta = c(-.2, 4), 
+  max.age = 12, 
+  s.val = c(1, 2), 
+  pi.s = .75, 
+  beta=.98, 
+  num.trials=10^5 
+) %>% 
+  simData()
+
+
+
+readRDS(paste0(varSave, 'simulatedData.rds')) %>% estimatePrimitives()

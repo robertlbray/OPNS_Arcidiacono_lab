@@ -1,0 +1,24 @@
+estimatePrimitives<-function(d, max.age=12, beta=.98, s.val=c(1, 2)){
+  #Inputs: 
+  #d: a data.frame d that gives the number of times a bus was replaced in period x.t.
+  #max.age: point at which cost stops increasing.
+  #s.val: potential values for the s parameter. Like Arcidiacono, we suppose these values are known.
+  #beta: discount factor that we assume is known
+  #Output: This function saves the MLE estimates of the theta cost parameters and the pi.s unobserved state distribution estimates to 'MLEests.txt'
+  
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
